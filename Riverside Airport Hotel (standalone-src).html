@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="greige" data-lang="de" data-radius="soft">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Riverside Airport Hotel — Kelsterbach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#f4f2ec; --surface:#ffffff; --surface-2:#faf8f3;
+  --ink:#211e19; --muted:#6f6a60; --line:#e6e1d8;
+  --accent:#bd5d3a; --accent-ink:#ffffff;
+  --radius:16px;
+  --maxw:1180px;
+  --pad:clamp(1.25rem,5vw,3rem);
+  --font-d:"Space Grotesk",system-ui,sans-serif;
+  --font-b:"Hanken Grotesk",system-ui,sans-serif;
+  --base:16px;
+}
+html[data-theme="slate"]{
+  --bg:#eef1f4; --surface:#ffffff; --surface-2:#f6f8fb;
+  --ink:#161b21; --muted:#5d6671; --line:#dde3e9;
+  --accent:#2f6fdb; --accent-ink:#ffffff;
+}
+html[data-theme="forest"]{
+  --bg:#eef1ec; --surface:#ffffff; --surface-2:#f5f8f4;
+  --ink:#172019; --muted:#5e675e; --line:#dde3da;
+  --accent:#2f6b4f; --accent-ink:#ffffff;
+}
+html[data-theme="anthracite"]{
+  --bg:#161719; --surface:#1e2023; --surface-2:#23262a;
+  --ink:#f0eeea; --muted:#9b9892; --line:#2d3033;
+  --accent:#cf9d52; --accent-ink:#16181a;
+}
+html[data-radius="sharp"]{ --radius:0px; }
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-b); font-size:var(--base); line-height:1.65;
+  -webkit-font-smoothing:antialiased; letter-spacing:-0.005em;
+  transition:background .4s ease,color .4s ease;
+}
+h1,h2,h3,h4{font-family:var(--font-d); font-weight:600; line-height:1.05; letter-spacing:-0.02em; margin:0;}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad);}
+.eyebrow{
+  font-family:var(--font-d); font-size:.72rem; font-weight:600; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:.6em;
+}
+.muted{color:var(--muted);}
+.lang-en{display:none;}
+
+/* buttons */
+.btn{
+  display:inline-flex; align-items:center; gap:.55em; font-family:var(--font-d); font-weight:600;
+  font-size:.95rem; padding:.85em 1.4em; border-radius:calc(var(--radius) - 4px);
+  border:1px solid transparent; cursor:pointer; transition:transform .15s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--accent); color:var(--accent-ink);}
+.btn-primary:hover{filter:brightness(1.05);}
+.btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+.btn-ghost:hover{border-color:var(--ink);}
+.btn .arrow{font-size:1.05em; line-height:0;}
+
+/* header */
+header.site{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter:blur(14px) saturate(1.2);
+  border-bottom:1px solid transparent; transition:border-color .3s ease, background .3s ease;
+}
+header.site.scrolled{border-color:var(--line);}
+.nav{display:flex; align-items:center; justify-content:space-between; height:74px; gap:1rem;}
+.brand{display:flex; align-items:center; gap:.7rem; font-family:var(--font-d); font-weight:700; letter-spacing:-0.02em; font-size:1.05rem; white-space:nowrap;}
+.brand>span{line-height:1.12;}
+.brand .mark{width:30px; height:30px; border-radius:8px; background:var(--accent); display:grid; place-items:center; color:var(--accent-ink); font-size:.95rem; flex:none;}
+html[data-radius="sharp"] .brand .mark{border-radius:0;}
+.brand small{display:block; font-family:var(--font-b); font-weight:500; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1px;}
+.nav-links{display:flex; align-items:center; gap:1.6rem; font-size:.92rem; font-weight:500;}
+.nav-links a{color:var(--muted); transition:color .2s; white-space:nowrap;}
+.nav-links a:hover{color:var(--ink);}
+.nav-right{display:flex; align-items:center; gap:1rem;}
+.lang-switch{display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; font-family:var(--font-d); font-size:.78rem; font-weight:600;}
+.lang-switch button{appearance:none; border:none; background:transparent; color:var(--muted); padding:.4em .8em; cursor:pointer; transition:background .2s,color .2s;}
+.lang-switch button.active{background:var(--ink); color:var(--bg);}
+@media (max-width:880px){ .nav-links{display:none;} }
+
+/* hero */
+.hero{padding-top:clamp(2.5rem,6vw,5rem); padding-bottom:clamp(3rem,6vw,5.5rem);}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,4vw,4rem); align-items:center;}
+@media (max-width:920px){ .hero-grid{grid-template-columns:1fr;} }
+.hero h1{font-size:clamp(2.5rem,6vw,4.4rem); font-weight:600;}
+.hero .lede{font-size:clamp(1.05rem,1.6vw,1.22rem); color:var(--muted); max-width:34ch; margin-top:1.5rem;}
+.hero-cta{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2.2rem;}
+.hero-meta{display:flex; gap:2.2rem; margin-top:2.6rem; flex-wrap:wrap;}
+.hero-meta .stat{display:flex; flex-direction:column;}
+.hero-meta .num{font-family:var(--font-d); font-size:1.7rem; font-weight:600; line-height:1;}
+.hero-meta .lbl{font-size:.8rem; color:var(--muted); margin-top:.35rem; letter-spacing:.02em;}
+.hero-img-wrap{position:relative;}
+/* hero carousel */
+.hero-carousel{position:relative; width:100%; height:clamp(340px,46vw,520px); border-radius:18px; overflow:hidden; box-shadow:0 30px 60px -30px rgba(0,0,0,.3); background:var(--surface-2);}
+html[data-radius="sharp"] .hero-carousel{border-radius:0;}
+.hc-track{display:flex; height:100%; transition:transform .6s cubic-bezier(.6,.05,.2,1); will-change:transform;}
+.hc-slide{min-width:100%; height:100%;}
+.hc-slide img{width:100%; height:100%; object-fit:cover; display:block;}
+.hc-btn{position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:44px; height:44px; border-radius:50%;
+  border:1px solid color-mix(in srgb,#fff 30%,transparent); background:color-mix(in srgb,#000 32%,transparent); color:#fff;
+  backdrop-filter:blur(6px); cursor:pointer; display:grid; place-items:center; font-size:1.5rem; line-height:0;
+  transition:background .2s, transform .15s;}
+.hc-btn:hover{background:color-mix(in srgb,#000 58%,transparent); transform:translateY(-50%) scale(1.08);}
+.hc-btn.prev{left:14px;} .hc-btn.next{right:14px;}
+.hc-counter{position:absolute; top:14px; right:14px; z-index:3; font-family:var(--font-d); font-size:.76rem; font-weight:600;
+  color:#fff; background:color-mix(in srgb,#000 42%,transparent); backdrop-filter:blur(6px); padding:.4em .75em;
+  border-radius:999px; letter-spacing:.06em;}
+.hc-progress{position:absolute; left:0; bottom:0; height:3px; width:100%; z-index:3; background:rgba(255,255,255,.22);}
+.hc-progress i{display:block; height:100%; width:0; background:var(--accent); transition:width .1s linear;}
+.hero-badge{
+  position:absolute; left:-14px; bottom:24px; background:var(--surface); border:1px solid var(--line);
+  padding:.9rem 1.1rem; border-radius:calc(var(--radius) - 2px); box-shadow:0 16px 40px -22px rgba(0,0,0,.45);
+  display:flex; align-items:center; gap:.75rem; max-width:230px;
+}
+.hero-badge .dot{width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none;}
+.hero-badge span{font-size:.82rem; line-height:1.35;}
+.hero-badge b{font-family:var(--font-d);}
+
+/* facts ticker */
+.facts{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--surface-2);}
+.facts-row{display:grid; grid-template-columns:repeat(4,1fr); }
+.facts-row .f{padding:1.6rem var(--pad); border-right:1px solid var(--line); display:flex; flex-direction:column; gap:.25rem;}
+.facts-row .f:last-child{border-right:none;}
+.facts-row .fk{font-family:var(--font-d); font-size:1.4rem; font-weight:600;}
+.facts-row .fl{font-size:.82rem; color:var(--muted);}
+@media (max-width:760px){ .facts-row{grid-template-columns:repeat(2,1fr);} .facts-row .f:nth-child(2){border-right:none;} .facts-row .f:nth-child(1),.facts-row .f:nth-child(2){border-bottom:1px solid var(--line);} }
+
+/* section scaffold */
+section.block{padding-block:clamp(4rem,7vw,7rem);}
+.sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; margin-bottom:clamp(2rem,4vw,3.4rem); flex-wrap:wrap;}
+.sec-head h2{font-size:clamp(1.9rem,3.4vw,2.9rem); max-width:18ch;}
+.sec-head p{color:var(--muted); max-width:42ch;}
+
+/* about */
+.about-h2 b{font-weight:600; color:var(--ink);}
+.about-h2 .h2-sub{font-weight:400; color:var(--muted); font-size:.62em; letter-spacing:-0.01em;}
+.about-grid{display:grid; grid-template-columns:1.35fr .65fr; gap:clamp(1.6rem,4vw,3.5rem); align-items:start;}
+@media (max-width:880px){ .about-grid{grid-template-columns:1fr;} }
+.about-prose{display:flex; flex-direction:column; gap:1.2rem; max-width:62ch;}
+.about-prose p{font-size:clamp(1rem,1.3vw,1.12rem); color:var(--ink); line-height:1.7;}
+.about-prose p:first-child{font-size:clamp(1.1rem,1.5vw,1.28rem); color:var(--ink);}
+.tip-card{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:var(--radius); padding:1.7rem; position:sticky; top:100px; display:flex; flex-direction:column; gap:.6rem;}
+html[data-radius="sharp"] .tip-card{border-radius:0;}
+.tip-card .tip-k{font-family:var(--font-d); font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent);}
+.tip-card h3{font-size:1.2rem;}
+.tip-card p{font-size:.92rem; color:var(--muted); line-height:1.6;}
+
+/* amenities */
+.amen-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+@media (max-width:820px){ .amen-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:520px){ .amen-grid{grid-template-columns:1fr;} }
+.amen{background:var(--surface); padding:1.8rem 1.6rem; display:flex; flex-direction:column; gap:.6rem; min-height:150px; transition:background .2s;}
+.amen:hover{background:var(--surface-2);}
+.amen .glyph{width:46px; height:46px; border-radius:12px; border:1px solid var(--line); display:grid; place-items:center; color:var(--accent); background:var(--surface-2);}
+html[data-radius="sharp"] .amen .glyph{border-radius:0;}
+.amen .glyph svg{width:22px; height:22px; display:block;}
+.amen h3{font-size:1.05rem; font-weight:600;}
+.amen p{font-size:.88rem; color:var(--muted);}
+
+/* rooms */
+.rooms{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;}
+@media (max-width:900px){ .rooms{grid-template-columns:1fr; max-width:480px; margin-inline:auto;} }
+.room{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .2s ease, box-shadow .2s ease;}
+.room:hover{transform:translateY(-4px); box-shadow:0 24px 50px -30px rgba(0,0,0,.4);}
+.room image-slot,.room .room-photo{width:100%; height:200px; object-fit:cover; display:block;}
+.room-body{padding:1.5rem; display:flex; flex-direction:column; gap:.5rem; flex:1;}
+.room-body .rtop{display:flex; align-items:baseline; justify-content:space-between; gap:1rem;}
+.room-body h3{font-size:1.25rem;}
+.room-body .price{font-family:var(--font-d); font-weight:600; color:var(--accent); white-space:nowrap;}
+.room-body .price small{display:block; font-size:.66rem; color:var(--muted); font-weight:500; text-align:right;}
+.room-feats{list-style:none; padding:0; margin:.6rem 0 0; display:flex; flex-direction:column; gap:.5rem; font-size:.88rem; color:var(--muted);}
+.room-feats li{display:flex; align-items:center; gap:.6em;}
+.room-feats li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--accent); flex:none;}
+.room .room-cta{margin-top:auto; padding-top:1.1rem;}
+.price-note{font-size:.8rem; color:var(--muted); margin-top:1.4rem; text-align:center;}
+
+/* location */
+.loc-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(1.5rem,3vw,3rem); align-items:stretch;}
+@media (max-width:880px){ .loc-grid{grid-template-columns:1fr;} }
+.dist-list{list-style:none; margin:0; padding:0;}
+.dist-list li{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.05rem 0; border-bottom:1px solid var(--line);}
+.dist-list li:first-child{padding-top:0;}
+.dist-list .place{font-family:var(--font-d); font-weight:500; font-size:1.02rem; display:flex; align-items:center; gap:.7rem;}
+.dist-list .place .pin{width:7px; height:7px; border-radius:50%; background:var(--accent); flex:none;}
+.dist-list .km{font-family:var(--font-d); font-weight:600; color:var(--muted); font-size:.95rem;}
+.dist-list .km b{color:var(--ink);}
+.map-card{position:relative; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; min-height:360px; background:
+  repeating-linear-gradient(135deg, var(--surface-2) 0 18px, var(--surface) 18px 36px);}
+.map-card .map-inner{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem; text-align:center; padding:2rem;}
+.map-card .pin-big{width:18px; height:18px; border-radius:50% 50% 50% 0; background:var(--accent); transform:rotate(-45deg); box-shadow:0 6px 18px -4px var(--accent);}
+.map-card .map-cap{font-family:"Hanken Grotesk",monospace; font-size:.78rem; color:var(--muted); letter-spacing:.04em;}
+.map-card{background:var(--surface-2);}
+.map-card iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:saturate(.92);}
+.map-card .map-link{position:absolute; right:12px; bottom:12px; z-index:2; background:var(--surface); color:var(--ink); border:1px solid var(--line); font-family:var(--font-d); font-weight:600; font-size:.78rem; padding:.5em .8em; border-radius:calc(var(--radius) - 6px); box-shadow:0 8px 24px -12px rgba(0,0,0,.5); transition:transform .15s ease;}
+html[data-radius="sharp"] .map-card .map-link{border-radius:0;}
+.map-card .map-link:hover{transform:translateY(-2px); color:var(--accent);}
+
+/* house rules */
+.rules-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+@media (max-width:900px){ .rules-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:520px){ .rules-grid{grid-template-columns:1fr;} }
+.rule{background:var(--surface); padding:1.7rem 1.5rem; display:flex; flex-direction:column; gap:.7rem; min-height:150px;}
+.rule .rk{font-family:var(--font-d); font-size:.74rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);}
+.rule .rv{font-family:var(--font-d); font-size:1.5rem; font-weight:600; line-height:1.1; margin-top:auto;}
+.rule .rv .ru{display:block; font-family:var(--font-b); font-size:.78rem; font-weight:500; color:var(--muted); letter-spacing:0; text-transform:none; margin-top:.2rem;}
+.rule .rv-sm{font-size:1rem; font-weight:500; font-family:var(--font-b); line-height:1.4; color:var(--ink);}
+
+/* reviews */
+.rev-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;}
+@media (max-width:900px){ .rev-grid{grid-template-columns:1fr;} }
+.review{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:1.8rem; display:flex; flex-direction:column; gap:1.1rem;}
+.review .stars{display:flex; gap:.25rem;}
+.review .stars i{width:8px; height:8px; border-radius:50%; background:var(--accent); display:block;}
+.review .quote{font-size:1.02rem; line-height:1.55;}
+.review .who{display:flex; align-items:center; gap:.8rem; margin-top:auto; padding-top:.4rem; border-top:1px solid var(--line);}
+.review .who .av{width:36px; height:36px; border-radius:50%; background:var(--surface-2); border:1px solid var(--line); display:grid; place-items:center; font-family:var(--font-d); font-weight:600; font-size:.9rem; color:var(--accent);}
+.review .who .name{font-family:var(--font-d); font-weight:600; font-size:.92rem;}
+.review .who .role{font-size:.78rem; color:var(--muted);}
+.rev-score{display:flex; align-items:center; gap:1rem;}
+.rev-score .big{font-family:var(--font-d); font-size:2.4rem; font-weight:700; color:var(--accent); line-height:1;}
+
+/* CTA / contact */
+.contact{background:var(--surface-2); border-top:1px solid var(--line);}
+.contact-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(2rem,4vw,4rem); align-items:start;}
+@media (max-width:880px){ .contact-grid{grid-template-columns:1fr;} }
+.contact h2{font-size:clamp(2rem,3.6vw,3rem); max-width:16ch;}
+.contact .lede{color:var(--muted); margin-top:1.2rem; max-width:40ch;}
+.contact-cta{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem;}
+.info-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:1.8rem;}
+.info-row{display:flex; gap:1rem; padding:1.05rem 0; border-bottom:1px solid var(--line);}
+.info-row:last-child{border-bottom:none;}
+.info-row:first-child{padding-top:0;}
+.info-row .ik{font-family:var(--font-d); font-weight:600; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); width:90px; flex:none; padding-top:.15rem;}
+.info-row .iv{font-size:.98rem; line-height:1.5;}
+.info-row .iv a:hover{color:var(--accent);}
+
+/* footer */
+footer.site{padding-block:2.6rem; border-top:1px solid var(--line);}
+.foot{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:.85rem; color:var(--muted);}
+.foot .brand{font-size:.95rem;}
+.foot-links{display:flex; gap:1.5rem;}
+.foot-links a:hover{color:var(--ink);}
+.foot-links a{cursor:pointer;}
+
+/* ---- privacy modal ---- */
+.modal-backdrop{
+  position:fixed; inset:0; z-index:120; display:none;
+  background:color-mix(in srgb, #000 55%, transparent);
+  backdrop-filter:blur(4px);
+  padding:clamp(1rem,4vw,3rem);
+  align-items:center; justify-content:center;
+}
+.modal-backdrop.open{display:flex;}
+.modal-backdrop.open .modal{animation:modalIn .28s cubic-bezier(.2,.7,.3,1) both;}
+@keyframes modalIn{from{opacity:0; transform:translateY(14px) scale(.985);} to{opacity:1; transform:none;}}
+@media (prefers-reduced-motion:reduce){ .modal-backdrop.open .modal{animation:none;} }
+.modal{
+  background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); border-radius:var(--radius);
+  width:min(720px,100%); max-height:min(82vh,860px);
+  display:flex; flex-direction:column; overflow:hidden;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.55);
+}
+.modal-head{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.4rem clamp(1.3rem,3vw,2rem); border-bottom:1px solid var(--line);
+  position:sticky; top:0; background:var(--surface);
+}
+.modal-head h2{font-size:1.4rem;}
+.modal-head .sub{font-size:.78rem; color:var(--muted); margin-top:.2rem; letter-spacing:.04em;}
+.modal-close{
+  appearance:none; border:1px solid var(--line); background:var(--surface-2); color:var(--ink);
+  width:38px; height:38px; border-radius:calc(var(--radius) - 6px); cursor:pointer; flex:none;
+  font-size:1.1rem; line-height:1; display:grid; place-items:center; transition:background .2s,border-color .2s,transform .15s;
+}
+.modal-close:hover{background:var(--accent); color:var(--accent-ink); border-color:transparent; transform:rotate(90deg);}
+.modal-body{padding:clamp(1.3rem,3vw,2rem); overflow-y:auto; line-height:1.7;}
+.modal-body h3{font-size:1rem; font-family:var(--font-d); margin:1.5rem 0 .4rem; letter-spacing:-0.01em;}
+.modal-body h3:first-child{margin-top:0;}
+.modal-body p{font-size:.92rem; color:var(--muted); margin-bottom:.2rem;}
+.modal-body p b{color:var(--ink); font-weight:600;}
+.modal-body a{color:var(--accent); text-decoration:underline; text-underline-offset:2px;}
+.modal-body ul{margin:.3rem 0 .2rem; padding-left:1.1rem; color:var(--muted); font-size:.92rem;}
+.modal-body li{margin-bottom:.25rem;}
+.modal-body .upd{margin-top:1.6rem; padding-top:1rem; border-top:1px solid var(--line); font-size:.8rem;}
+.modal [data-l]{display:none;}
+html[data-lang="de"] .modal [data-l="de"]{display:block;}
+html[data-lang="en"] .modal [data-l="en"]{display:block;}
+
+/* tweaks mount */
+#tweaks-root{position:fixed; z-index:90;}
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <span class="mark">R</span>
+      <span>Riverside Airport Hotel<small data-en="Kelsterbach · Frankfurt">Kelsterbach · Frankfurt</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#zimmer" data-en="Rooms">Zimmer</a>
+      <a href="#ausstattung" data-en="Amenities">Ausstattung</a>
+      <a href="#lage" data-en="Location">Lage</a>
+      <a href="#bewertungen" data-en="Reviews">Bewertungen</a>
+      <a href="#hausregeln" data-en="House rules">Hausregeln</a>
+      <a href="#kontakt" data-en="Contact">Kontakt</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Sprache">
+        <button data-setlang="de" class="active">DE</button>
+        <button data-setlang="en">EN</button>
+      </div>
+      <a class="btn btn-primary" href="#kontakt" data-en="Book now">Jetzt buchen<span class="arrow">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-en="Kelsterbach · 2 km to Frankfurt Airport">Kelsterbach · 2 km zum Flughafen Frankfurt</span>
+        <h1 data-en="Rest well. Just minutes from the airport.">Gut übernachten. Nur Minuten vom Flughafen.</h1>
+        <p class="lede" data-en="Practical, quiet rooms for fitters, crews and business travellers. Free parking, free Wi-Fi — ideal for short trips and longer assignments. Just one S-Bahn stop from the terminals.">Praktische, ruhige Zimmer für Monteure, Teams und Geschäftsreisende. Kostenloses Parken und kostenfreies WLAN, unser Hotel ist ideal für kurze Trips und längere Einsätze. Nur eine S-Bahn-Station von den Terminals entfernt.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://www.booking.com/hotel/de/wirtshaus-zum-schutzenhof-kelsterbach.de.html" target="_blank" rel="noopener" data-en="Book on Booking.com">Auf Booking.com buchen<span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="https://wa.me/49000000000" target="_blank" rel="noopener" data-en="WhatsApp enquiry">WhatsApp-Anfrage</a>
+        </div>
+        <div class="hero-meta">
+          <div class="stat"><span class="num">2 km</span><span class="lbl" data-en="Frankfurt Airport">Flughafen Frankfurt</span></div>
+          <div class="stat"><span class="num">12 km</span><span class="lbl" data-en="Central Station">Hauptbahnhof</span></div>
+          <div class="stat"><span class="num">0 €</span><span class="lbl" data-en="Parking & Wi-Fi">Parken & WLAN</span></div>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-carousel" id="heroCarousel" aria-roledescription="carousel" aria-label="Bildergalerie Hotel">
+          <div class="hc-track" id="hcTrack">
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/568099444.jpg" alt="Helles Zimmer mit Schreibtisch und 3D-Wand" loading="eager" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/457059087.jpg" alt="Promenade am Mainufer" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/620848581.jpg" alt="Doppelbett mit Holzlamellenwand" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/424422736.jpg" alt="Steak mit Bratkartoffeln" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/505394441.jpg" alt="Zimmer mit Sessel und Stadtplan" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/514131659.jpg" alt="Frühstücksraum mit großer Wanduhr" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/477523222.jpg" alt="Zimmer mit Stadtplan-Poster" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/457058772.jpg" alt="Mainufer mit Biergarten" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/424422475.jpg" alt="Schweinshaxe mit Sauerkraut und Knödel" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/505394530.jpg" alt="Zimmer mit Sofa und Flachbild-TV" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/492557602.jpg" alt="Dachzimmer mit Sessel und Schreibtisch" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/325283342.jpg" alt="Badezimmer mit Dusche und WC" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/514131815.jpg" alt="Frühstückstafel mit Tagesangebot" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/556958431.jpg" alt="Zimmer mit Schreibtisch und Bad" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/424422430.jpg" alt="Schnitzel mit Pommes und Zitrone" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/568100120.jpg" alt="Zimmer mit Stadtplan und Regal" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/456238212.jpg" alt="Badezimmer in Marmoroptik" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/505394566.jpg" alt="Zimmer mit blauem Sessel und Spiegel" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/417717768.jpg" alt="Wasserkocher mit Kaffee- und Teezubehör" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/505211553.jpg" alt="Bett mit Holzlamellenwand" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/492559019.jpg" alt="Doppelbett mit frischen Handtüchern" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/505394468.jpg" alt="Zimmer mit Fenster und Vorhängen" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/325283347.jpg" alt="Großes, helles Badezimmer" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/457058640.jpg" alt="E-Bike-Ladestation in Kelsterbach" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/425156879.jpg" alt="Heller Eingangsbereich" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/417717748.jpg" alt="Smartes Türschloss am Zimmer" loading="lazy" /></div>
+          <div class="hc-slide"><img src="uploads/Hotel Kelsterbach/456238246.jpg" alt="Modernes Gäste-WC" loading="lazy" /></div>
+          </div>
+          <button class="hc-btn prev" id="hcPrev" aria-label="Vorheriges Bild">‹</button>
+          <button class="hc-btn next" id="hcNext" aria-label="Nächstes Bild">›</button>
+          <div class="hc-counter"><span id="hcIdx">01</span> / 27</div>
+          <div class="hc-progress"><i id="hcBar"></i></div>
+        </div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-en="<b>Free private parking</b> directly at the hotel"><b>Kostenloser Privatparkplatz</b> direkt am Hotel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <div class="facts">
+    <div class="facts-row">
+      <div class="f"><span class="fk">Frei</span><span class="fl" data-en="Free Wi-Fi in all rooms">Kostenfreies WLAN in allen Zimmern</span></div>
+      <div class="f"><span class="fk">Digitaler Self Check-in</span><span class="fl" data-en="Reachable around the clock">Rund um die Uhr erreichbar durch Self-Checkin.</span></div>
+      <div class="f"><span class="fk">Terrasse</span><span class="fl" data-en="Restaurant & bar on site">Restaurant & Bar im Haus</span></div>
+      <div class="f"><span class="fk">Langzeit</span><span class="fl" data-en="Monthly rates for crews">Monatspreise für Monteure</span></div>
+    </div>
+  </div>
+
+  <!-- AMENITIES -->
+  <section class="block" id="ausstattung">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-en="Everything a working stay needs">Alles, was ein Arbeits­aufenthalt braucht</h2>
+      </div>
+      <div class="amen-grid">
+        <div class="amen"><span class="glyph"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M11.875 15.6249C11.875 16.1221 11.6775 16.5991 11.3258 16.9507C10.9742 17.3023 10.4973 17.4999 10 17.4999C9.50272 17.4999 9.02581 17.3023 8.67418 16.9507C8.32254 16.5991 8.125 16.1221 8.125 15.6249C8.125 15.1276 8.32254 14.6507 8.67418 14.299C9.02581 13.9474 9.50272 13.7499 10 13.7499C10.4973 13.7499 10.9742 13.9474 11.3258 14.299C11.6775 14.6507 11.875 15.1276 11.875 15.6249ZM13.125 15.6249C13.125 14.7961 12.7958 14.0012 12.2097 13.4152C11.6237 12.8291 10.8288 12.4999 10 12.4999C9.1712 12.4999 8.37634 12.8291 7.79029 13.4152C7.20424 14.0012 6.875 14.7961 6.875 15.6249C6.875 16.4537 7.20424 17.2485 7.79029 17.8346C8.37634 18.4206 9.1712 18.7499 10 18.7499C10.8288 18.7499 11.6237 18.4206 12.2097 17.8346C12.7958 17.2485 13.125 16.4537 13.125 15.6249ZM14.8583 10.764C13.5691 9.47504 11.8206 8.75092 9.9975 8.75092C8.17439 8.75092 6.42594 9.47504 5.13667 10.764C5.02627 10.8825 4.96616 11.0392 4.96902 11.2011C4.97188 11.363 5.03747 11.5175 5.15198 11.632C5.26649 11.7466 5.42098 11.8122 5.5829 11.815C5.74482 11.8179 5.90152 11.7578 6.02 11.6474C6.54233 11.125 7.16243 10.7107 7.84489 10.428C8.52735 10.1453 9.25881 9.99981 9.9975 9.99981C10.7362 9.99981 11.4676 10.1453 12.1501 10.428C12.8326 10.7107 13.4527 11.125 13.975 11.6474C14.0935 11.7578 14.2502 11.8179 14.4121 11.815C14.574 11.8122 14.7285 11.7466 14.843 11.632C14.9575 11.5175 15.0231 11.363 15.026 11.2011C15.0288 11.0392 14.9687 10.8825 14.8583 10.764ZM17.5125 8.11236C13.3633 3.96236 6.63667 3.96236 2.4875 8.11236C2.42609 8.16958 2.37684 8.23858 2.34268 8.31525C2.30852 8.39191 2.29015 8.47468 2.28867 8.55859C2.28719 8.64251 2.30263 8.72587 2.33406 8.8037C2.3655 8.88152 2.41229 8.95221 2.47164 9.01156C2.53098 9.07091 2.60168 9.1177 2.6795 9.14913C2.75733 9.18057 2.84068 9.196 2.9246 9.19452C3.00852 9.19304 3.09128 9.17467 3.16795 9.14051C3.24462 9.10635 3.31362 9.0571 3.37083 8.9957C7.0325 5.33486 12.9675 5.33486 16.6292 8.9957C16.6864 9.0571 16.7554 9.10635 16.8321 9.14051C16.9087 9.17467 16.9915 9.19304 17.0754 9.19452C17.1593 9.196 17.2427 9.18057 17.3205 9.14913C17.3983 9.1177 17.469 9.07091 17.5284 9.01156C17.5877 8.95221 17.6345 8.88152 17.6659 8.8037C17.6974 8.72587 17.7128 8.64251 17.7113 8.55859C17.7098 8.47468 17.6915 8.39191 17.6573 8.31525C17.6232 8.23858 17.5739 8.16958 17.5125 8.11236ZM19.8008 5.10986C14.28 -0.0359699 5.72 -0.0359699 0.200001 5.10986C0.13588 5.16458 0.0834904 5.2317 0.0459834 5.30719C0.00847634 5.38268 -0.0133728 5.46498 -0.0182497 5.54913C-0.0231266 5.63328 -0.0109304 5.71755 0.0176052 5.79687C0.0461408 5.87618 0.090426 5.94891 0.147797 6.01067C0.205167 6.07243 0.274438 6.12194 0.351441 6.15623C0.428443 6.19053 0.511587 6.20889 0.595871 6.21021C0.680154 6.21154 0.763834 6.1958 0.841878 6.16395C0.919922 6.1321 0.990716 6.08479 1.05 6.02486C6.09167 1.32653 13.9075 1.32653 18.9483 6.02486C19.0084 6.08078 19.0789 6.12432 19.1558 6.153C19.2327 6.18167 19.3145 6.19492 19.3966 6.19197C19.4786 6.18903 19.5592 6.16997 19.6339 6.13586C19.7085 6.10175 19.7757 6.05328 19.8317 5.9932C19.8876 5.93312 19.9311 5.86261 19.9598 5.7857C19.9885 5.7088 20.0017 5.627 19.9988 5.54497C19.9958 5.46295 19.9768 5.3823 19.9427 5.30765C19.9086 5.23299 19.8609 5.16578 19.8008 5.10986Z" fill="currentColor"></path></g></svg></span><h3 data-en="Free Wi-Fi">Kostenfreies WLAN</h3><p data-en="Stable internet in every room and common area.">Stabiles Internet in jedem Zimmer und allen Gemeinschaftsbereichen.</p></div>
+        <div class="amen"><span class="glyph"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M18.75 10C18.75 14.8325 14.8325 18.75 10 18.75C5.1675 18.75 1.25 14.8325 1.25 10C1.25 5.1675 5.1675 1.25 10 1.25C14.8325 1.25 18.75 5.1675 18.75 10ZM20 10C20 4.4775 15.5225 0 10 0C4.4775 0 0 4.4775 0 10C0 15.5225 4.4775 20 10 20C15.5225 20 20 15.5225 20 10ZM11.875 8.75C11.875 9.08152 11.7433 9.39946 11.5089 9.63388C11.2745 9.8683 10.9565 10 10.625 10H8.75L9.375 10.625V6.875L8.75 7.5H10.625C10.9565 7.5 11.2745 7.6317 11.5089 7.86612C11.7433 8.10054 11.875 8.41848 11.875 8.75ZM13.125 8.75C13.125 8.08696 12.8616 7.45107 12.3928 6.98223C11.9239 6.51339 11.288 6.25 10.625 6.25H8.75C8.58424 6.25 8.42527 6.31585 8.30806 6.43306C8.19085 6.55027 8.125 6.70924 8.125 6.875V10.625C8.125 10.97 8.405 11.25 8.75 11.25H10.625C11.288 11.25 11.9239 10.9866 12.3928 10.5178C12.8616 10.0489 13.125 9.41304 13.125 8.75ZM9.375 14.375V10.625C9.375 10.4592 9.30915 10.3003 9.19194 10.1831C9.07473 10.0658 8.91576 10 8.75 10C8.58424 10 8.42527 10.0658 8.30806 10.1831C8.19085 10.3003 8.125 10.4592 8.125 10.625V14.375C8.125 14.5408 8.19085 14.6997 8.30806 14.8169C8.42527 14.9342 8.58424 15 8.75 15C8.91576 15 9.07473 14.9342 9.19194 14.8169C9.30915 14.6997 9.375 14.5408 9.375 14.375Z" fill="currentColor"></path></g></svg></span><h3 data-en="Free private parking">Kostenloser Privatparkplatz</h3><p data-en="Park your van or car for free, directly on site.">Stellen Sie Transporter oder Auto kostenlos direkt vor Ort ab.</p></div>
+        <div class="amen"><span class="glyph"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0.625c-.345 0-.625.28-.625.625v.708A8.13 8.13 0 0 0 1.9 8.05c-.13.46.33.84.77.66A12.3 12.3 0 0 1 7.4 7.79c.86-.07 1.73-.05 2.6.05V18.4c0 .98.8 1.78 1.78 1.78.98 0 1.78-.8 1.78-1.78a.625.625 0 1 0-1.25 0c0 .29-.24.53-.53.53s-.53-.24-.53-.53V7.84c.87-.1 1.74-.12 2.6-.05 1.65.13 3.26.5 4.73 1.1.44.18.9-.2.77-.66A8.13 8.13 0 0 0 10.625 1.96V1.25c0-.345-.28-.625-.625-.625Zm0 2.5a6.88 6.88 0 0 1 6.18 3.86 13.6 13.6 0 0 0-4.06-.79 14.6 14.6 0 0 0-4.24 0 13.6 13.6 0 0 0-4.06.79A6.88 6.88 0 0 1 10 3.125Z" fill="currentColor"></path></svg></span><h3 data-en="Terrace">Terrasse</h3><p data-en="Unwind outdoors after a long day on the job.">Nach einem langen Arbeitstag draußen durchatmen.</p></div>
+        <div class="amen"><span class="glyph"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M4.99918 0.625V19.375C4.99918 19.5408 5.06502 19.6997 5.18223 19.8169C5.29944 19.9342 5.45842 20 5.62418 20C5.78994 20 5.94891 19.9342 6.06612 19.8169C6.18333 19.6997 6.24918 19.5408 6.24918 19.375V0.625C6.24918 0.45924 6.18333 0.300269 6.06612 0.183058C5.94891 0.065848 5.78994 1.86265e-08 5.62418 1.86265e-08C5.45842 1.86265e-08 5.29944 0.065848 5.18223 0.183058C5.06502 0.300269 4.99918 0.45924 4.99918 0.625ZM7.49918 0.625V6.25C7.49698 6.74689 7.2985 7.22278 6.94699 7.57399C6.59547 7.92519 6.1194 8.12325 5.62251 8.125C5.12591 8.12237 4.65044 7.9237 4.2996 7.57223C3.94875 7.22076 3.75093 6.74494 3.74918 6.24833V0.625C3.74918 0.45924 3.68333 0.300269 3.56612 0.183058C3.44891 0.065848 3.28994 0 3.12418 0C2.95842 0 2.79944 0.065848 2.68223 0.183058C2.56502 0.300269 2.49918 0.45924 2.49918 0.625V6.25C2.50137 7.07784 2.83109 7.87116 3.41631 8.45669C4.00152 9.04222 4.79467 9.37236 5.62251 9.375C6.45064 9.37324 7.24439 9.04372 7.83028 8.45846C8.41616 7.87319 8.74653 7.07979 8.74918 6.25167V0.625C8.74918 0.45924 8.68333 0.300269 8.56612 0.183058C8.44891 0.065848 8.28994 0 8.12418 0C7.95842 0 7.79944 0.065848 7.68223 0.183058C7.56502 0.300269 7.49918 0.45924 7.49918 0.625ZM13.1242 13.75H15.6242C16.61 13.7883 17.46 13 17.4992 11.9908C17.5011 11.9442 17.5011 11.8975 17.4992 11.8508C17.2908 6.29083 16.8092 3.70083 14.8067 0.573333C14.6591 0.347727 14.443 0.175543 14.1901 0.0822042C13.9372 -0.0111341 13.661 -0.0206789 13.4022 0.0549792C13.1435 0.130637 12.916 0.287488 12.7532 0.502371C12.5904 0.717254 12.5011 0.97878 12.4983 1.24833V19.375C12.4983 19.5408 12.5642 19.6997 12.6814 19.8169C12.7986 19.9342 12.9576 20 13.1233 20C13.2891 20 13.4481 19.9342 13.5653 19.8169C13.6825 19.6997 13.7483 19.5408 13.7483 19.375V1.2525C13.7483 1.255 13.7492 1.2525 13.7508 1.2525L13.7575 1.25417C15.5992 4.12917 16.0492 6.54917 16.2492 11.8983V11.9425C16.2435 12.0962 16.1771 12.2414 16.0644 12.3461C15.9517 12.4508 15.8021 12.5065 15.6483 12.5008L13.1242 12.5C12.9584 12.5 12.7994 12.5658 12.6822 12.6831C12.565 12.8003 12.4992 12.9592 12.4992 13.125C12.4992 13.2908 12.565 13.4497 12.6822 13.5669C12.7994 13.6842 12.9584 13.75 13.1242 13.75Z" fill="currentColor"></path></g></svg></span><h3 data-en="Restaurant">Restaurant</h3><p data-en="Hearty meals in-house — no need to drive out.">Herzhaftes Essen im Haus, inklusive Biergarten im Sommer. Kein langes Suchen nach einem Lokal. </p></div>
+        <div class="amen"><span class="glyph"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M6.87666 20H11.8767C12.0424 20 12.2014 19.9342 12.3186 19.8169C12.4358 19.6997 12.5017 19.5408 12.5017 19.375C12.5017 19.2092 12.4358 19.0503 12.3186 18.9331C12.2014 18.8158 12.0424 18.75 11.8767 18.75H6.87666C6.7109 18.75 6.55193 18.8158 6.43472 18.9331C6.31751 19.0503 6.25166 19.2092 6.25166 19.375C6.25166 19.5408 6.31751 19.6997 6.43472 19.8169C6.55193 19.9342 6.7109 20 6.87666 20ZM10.0017 19.375V11.875C10.0017 11.7092 9.93581 11.5503 9.8186 11.4331C9.70139 11.3158 9.54242 11.25 9.37666 11.25C9.2109 11.25 9.05193 11.3158 8.93472 11.4331C8.81751 11.5503 8.75166 11.7092 8.75166 11.875V19.375C8.75166 19.5408 8.81751 19.6997 8.93472 19.8169C9.05193 19.9342 9.2109 20 9.37666 20C9.54242 20 9.70139 19.9342 9.8186 19.8169C9.93581 19.6997 10.0017 19.5408 10.0017 19.375ZM16.2517 5.88333C16.4263 5.70852 16.5451 5.48589 16.5933 5.24356C16.6414 5.00123 16.6167 4.75007 16.5221 4.52179C16.4276 4.29352 16.2676 4.09838 16.0622 3.96101C15.8569 3.82365 15.6154 3.75022 15.3683 3.75H3.385C3.13793 3.75022 2.89647 3.82365 2.69111 3.96101C2.48575 4.09838 2.3257 4.29352 2.23118 4.52179C2.13667 4.75007 2.11191 5.00123 2.16005 5.24356C2.20819 5.48589 2.32707 5.70852 2.50166 5.88333L8.935 12.3167C9.05218 12.4337 9.21104 12.4994 9.37666 12.4994C9.54229 12.4994 9.70114 12.4337 9.81833 12.3167L16.2517 5.88333ZM15.3667 5L8.93333 11.4333H9.8175L3.385 5H15.3667ZM0.626663 1.25H2.97833C3.09446 1.25 3.20829 1.28236 3.30706 1.34345C3.40583 1.40453 3.48562 1.49193 3.5375 1.59583L5.0675 4.65417C5.10377 4.72825 5.15434 4.79442 5.21631 4.84886C5.27827 4.90331 5.3504 4.94495 5.42853 4.97138C5.50667 4.99782 5.58926 5.00852 5.67156 5.00289C5.75385 4.99725 5.83421 4.97538 5.90801 4.93853C5.98181 4.90169 6.04758 4.8506 6.10154 4.78821C6.1555 4.72583 6.19658 4.65338 6.22241 4.57504C6.24823 4.4967 6.2583 4.41402 6.25202 4.33178C6.24574 4.24953 6.22325 4.16934 6.18583 4.09583L4.65583 1.03667C4.5001 0.725114 4.26066 0.463098 3.96437 0.279993C3.66808 0.0968889 3.32664 -6.55292e-05 2.97833 3.32288e-08H0.626663C0.460903 3.32288e-08 0.301932 0.0658481 0.184721 0.183058C0.0675112 0.300269 0.00166321 0.45924 0.00166321 0.625C0.00166321 0.79076 0.0675112 0.949731 0.184721 1.06694C0.301932 1.18415 0.460903 1.25 0.626663 1.25ZM13.8017 4.2525C13.6882 3.69563 13.7681 3.11672 14.0281 2.61138C14.2881 2.10604 14.7127 1.70449 15.2318 1.47304C15.7508 1.24158 16.3333 1.19407 16.8829 1.33835C17.4326 1.48262 17.9167 1.81005 18.2551 2.26657C18.5936 2.72309 18.7663 3.2814 18.7446 3.84929C18.7229 4.41719 18.5082 4.9607 18.1359 5.39009C17.7636 5.81948 17.256 6.10906 16.6969 6.21101C16.1379 6.31296 15.5607 6.22118 15.0608 5.95083C14.9156 5.87765 14.7475 5.86397 14.5924 5.91269C14.4372 5.96141 14.3071 6.0687 14.2298 6.21178C14.1524 6.35485 14.1339 6.52244 14.1782 6.67895C14.2224 6.83546 14.3259 6.96857 14.4667 7.05C15.2167 7.45555 16.0826 7.59319 16.9215 7.4402C17.7603 7.28721 18.5219 6.85274 19.0804 6.20852C19.639 5.56429 19.9612 4.74884 19.9938 3.8968C20.0264 3.04476 19.7675 2.20708 19.2598 1.52205C18.752 0.837031 18.0259 0.345633 17.2012 0.128992C16.3765 -0.0876491 15.5026 -0.016579 14.7238 0.330468C13.9449 0.677515 13.3077 1.27979 12.9174 2.03785C12.527 2.79591 12.4068 3.66442 12.5767 4.5C12.5915 4.58179 12.6225 4.65979 12.6679 4.72945C12.7132 4.79911 12.772 4.85903 12.8408 4.90569C12.9096 4.95235 12.987 4.98481 13.0685 5.00119C13.15 5.01757 13.2339 5.01752 13.3154 5.00106C13.3969 4.9846 13.4742 4.95205 13.543 4.90532C13.6117 4.85859 13.6705 4.79862 13.7157 4.72891C13.761 4.6592 13.792 4.58116 13.8067 4.49936C13.8215 4.41756 13.8197 4.33363 13.8017 4.2525Z" fill="currentColor"></path></g></svg></span><h3 data-en="Bar">Bar</h3><p data-en="A cold drink and a relaxed corner in the evening.">Ein kühles Getränk und eine ruhige Ecke am Abend ohne das Hotelgelände verlassen zu müssen.</p></div>
+        <div class="amen"><span class="glyph"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path d="M16.25 7.5H18.125C18.2908 7.5 18.4497 7.56585 18.5669 7.68306C18.6841 7.80027 18.75 7.95924 18.75 8.125V10.625C18.75 10.7908 18.6841 10.9497 18.5669 11.0669C18.4497 11.1842 18.2908 11.25 18.125 11.25H11.875C11.7092 11.25 11.5503 11.3158 11.4331 11.4331C11.3158 11.5503 11.25 11.7092 11.25 11.875C11.25 12.0408 11.3158 12.1997 11.4331 12.3169C11.5503 12.4342 11.7092 12.5 11.875 12.5H18.125C18.6223 12.5 19.0992 12.3025 19.4508 11.9508C19.8025 11.5992 20 11.1223 20 10.625V8.125C20 7.62772 19.8025 7.15081 19.4508 6.79917C19.0992 6.44754 18.6223 6.25 18.125 6.25H16.25C16.0842 6.25 15.9253 6.31585 15.8081 6.43306C15.6908 6.55027 15.625 6.70924 15.625 6.875C15.625 7.04076 15.6908 7.19973 15.8081 7.31694C15.9253 7.43415 16.0842 7.5 16.25 7.5ZM4.375 11.25H3.125L3.75 11.875V6.875L3.125 7.5H9.375C9.54076 7.5 9.69973 7.43415 9.81694 7.31694C9.93415 7.19973 10 7.04076 10 6.875C10 6.70924 9.93415 6.55027 9.81694 6.43306C9.69973 6.31585 9.54076 6.25 9.375 6.25H3.125C2.95924 6.25 2.80026 6.31585 2.68305 6.43306C2.56584 6.55027 2.5 6.70924 2.5 6.875V11.875C2.5 12.22 2.78 12.5 3.125 12.5H4.375C4.54076 12.5 4.69973 12.4342 4.81694 12.3169C4.93415 12.1997 5 12.0408 5 11.875C5 11.7092 4.93415 11.5503 4.81694 11.4331C4.69973 11.3158 4.54076 11.25 4.375 11.25ZM12.5 10V11.875C12.5 12.0408 12.5658 12.1997 12.6831 12.3169C12.8003 12.4342 12.9592 12.5 13.125 12.5C13.2908 12.5 13.4497 12.4342 13.5669 12.3169C13.6841 12.1997 13.75 12.0408 13.75 11.875V10C13.75 9.83424 13.6841 9.67527 13.5669 9.55806C13.4497 9.44085 13.2908 9.375 13.125 9.375C12.9592 9.375 12.8003 9.44085 12.6831 9.55806C12.5658 9.67527 12.5 9.83424 12.5 10ZM-4.23566e-06 6.875V11.875C-4.23566e-06 12.0408 0.0658438 12.1997 0.183054 12.3169C0.300264 12.4342 0.459235 12.5 0.624996 12.5C0.790756 12.5 0.949727 12.4342 1.06694 12.3169C1.18415 12.1997 1.25 12.0408 1.25 11.875V6.875C1.25 6.70924 1.18415 6.55027 1.06694 6.43306C0.949727 6.31585 0.790756 6.25 0.624996 6.25C0.459235 6.25 0.300264 6.31585 0.183054 6.43306C0.0658438 6.55027 -4.23566e-06 6.70924 -4.23566e-06 6.875ZM1.06666 19.8167L19.8167 1.06667C19.9271 0.948187 19.9872 0.791482 19.9843 0.629565C19.9815 0.467647 19.9159 0.313159 19.8013 0.198648C19.6868 0.0841377 19.5323 0.0185443 19.3704 0.0156875C19.2085 0.0128307 19.0518 0.0729333 18.9333 0.183333L0.183329 18.9333C0.121923 18.9906 0.0726716 19.0596 0.0385116 19.1362C0.00435163 19.2129 -0.0140166 19.2956 -0.0154972 19.3796C-0.0169779 19.4635 -0.00154065 19.5468 0.0298935 19.6247C0.0613277 19.7025 0.108115 19.7732 0.167464 19.8325C0.226813 19.8919 0.297508 19.9387 0.375331 19.9701C0.453155 20.0015 0.536512 20.017 0.620431 20.0155C0.70435 20.014 0.787111 19.9956 0.863778 19.9615C0.940444 19.9273 1.00944 19.8781 1.06666 19.8167ZM3.75 0.625C3.75 1.12228 3.55245 1.59919 3.20082 1.95083C2.84919 2.30246 2.37228 2.5 1.875 2.5C1.37771 2.5 0.900801 2.69754 0.549171 3.04917C0.19754 3.40081 -4.23566e-06 3.87772 -4.23566e-06 4.375C-4.23566e-06 4.54076 0.0658438 4.69973 0.183054 4.81694C0.300264 4.93415 0.459235 5 0.624996 5C0.790756 5 0.949727 4.93415 1.06694 4.81694C1.18415 4.69973 1.25 4.54076 1.25 4.375C1.25 4.20924 1.31584 4.05027 1.43305 3.93306C1.55026 3.81585 1.70924 3.75 1.875 3.75C2.28538 3.75 2.69174 3.66917 3.07088 3.51212C3.45002 3.35508 3.79452 3.12489 4.0847 2.83471C4.37489 2.54453 4.60507 2.20003 4.76212 1.82089C4.91917 1.44174 5 1.03538 5 0.625C5 0.45924 4.93415 0.300269 4.81694 0.183058C4.69973 0.065848 4.54076 0 4.375 0C4.20924 0 4.05026 0.065848 3.93305 0.183058C3.81584 0.300269 3.75 0.45924 3.75 0.625Z" fill="currentColor"></path></g></svg></span><h3 data-en="Non-smoking">Nichtraucher­unterkunft</h3><p data-en="A clean, fresh environment throughout the house.">Ein sauberes, frisches Umfeld im ganzen Haus.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="block" id="zimmer" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-en="Rooms & rates">Zimmer & Preise</h2>
+        <p data-en="From single nights to monthly stays. Tell us your dates and headcount — we'll find the right fit.">Von der einzelnen Nacht bis zum Monatsaufenthalt. Sagen Sie uns Zeitraum und Personenzahl — wir haben das passende Angebot für Sie.</p>
+      </div>
+      <div class="rooms">
+        <div class="room">
+          <img class="room-photo" src="uploads/Hotel Kelsterbach/557070572.jpg" alt="Einzelzimmer" loading="lazy" />
+          <div class="room-body">
+            <div class="rtop">
+              <h3 data-en="Single room">Einzelzimmer</h3>
+              <span class="price">ab 49 €<small data-en="per night">pro Nacht</small></span>
+            </div>
+            <ul class="room-feats">
+              <li data-en="For solo travellers & fitters">Für Einzelreisende & Monteure</li>
+              <li data-en="Desk & free Wi-Fi">Schreibtisch & kostenfreies WLAN</li>
+              <li data-en="Quiet location">Ruhige Lage</li>
+            </ul>
+            <div class="room-cta"><a class="btn btn-ghost" href="#kontakt" data-en="Enquire">Anfragen</a></div>
+          </div>
+        </div>
+        <div class="room">
+          <img class="room-photo" src="uploads/Hotel Kelsterbach/478623460.jpg" alt="Doppelzimmer" loading="lazy" />
+          <div class="room-body">
+            <div class="rtop">
+              <h3 data-en="Double room">Doppelzimmer</h3>
+              <span class="price">ab 69 €<small data-en="per night">pro Nacht</small></span>
+            </div>
+            <ul class="room-feats">
+              <li data-en="Two single beds or one double">Zwei Einzel- oder ein Doppelbett</li>
+              <li data-en="Ideal for two-person crews">Ideal für Zweier-Teams</li>
+              <li data-en="Desk & free Wi-Fi">Schreibtisch & kostenfreies WLAN</li>
+            </ul>
+            <div class="room-cta"><a class="btn btn-ghost" href="#kontakt" data-en="Enquire">Anfragen</a></div>
+          </div>
+        </div>
+        <div class="room">
+          <img class="room-photo" src="uploads/Hotel Kelsterbach/489277208.jpg" alt="Monteurzimmer mit zwei Betten" loading="lazy" />
+          <div class="room-body">
+            <div class="rtop">
+              <h3 data-en="Crew / long-stay">Monteurzimmer</h3>
+              <span class="price" data-en="on request">auf Anfrage<small data-en="monthly rate">Monatspreis</small></span>
+            </div>
+            <ul class="room-feats">
+              <li data-en="Multi-bed for whole teams">Mehrbett für ganze Teams</li>
+              <li data-en="Discounted weekly & monthly rates">Rabattierte Wochen- & Monatspreise</li>
+              <li data-en="Invoice with VAT for companies">Rechnung mit MwSt. für Firmen</li>
+            </ul>
+            <div class="room-cta"><a class="btn btn-ghost" href="#kontakt" data-en="Enquire">Anfragen</a></div>
+          </div>
+        </div>
+      </div>
+      <p class="price-note" data-en="Indicative prices — please replace with your current rates.">Richtpreise — bitte durch Ihre aktuellen Preise ersetzen.</p>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="block" id="lage" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-en="Perfectly placed by the airport">Perfekt platziert am Flughafen</h2>
+        <p data-en="Two kilometres from the terminals, twelve from the city. Everything Frankfurt is within easy reach.">Zwei Kilometer zu den Terminals, zwölf zur City. Ganz Frankfurt ist bequem erreichbar.</p>
+      </div>
+      <div class="loc-grid">
+        <ul class="dist-list">
+          <li><span class="place"><span class="pin"></span><span data-en="Frankfurt Airport">Flughafen Frankfurt</span></span><span class="km"><b>2</b> km</span></li>
+          <li><span class="place"><span class="pin"></span><span data-en="Frankfurt Central Station">Frankfurt Hauptbahnhof</span></span><span class="km"><b>12</b> km</span></li>
+          <li><span class="place"><span class="pin"></span><span data-en="English Theatre">English Theatre</span></span><span class="km"><b>13</b> km</span></li>
+          <li><span class="place"><span class="pin"></span><span data-en="Palmengarten">Palmengarten</span></span><span class="km"><b>13</b> km</span></li>
+          <li><span class="place"><span class="pin"></span><span data-en="Städel Museum">Städel Museum</span></span><span class="km"><b>13</b> km</span></li>
+          <li><span class="place"><span class="pin"></span><span data-en="Goethe House">Goethe-Haus</span></span><span class="km"><b>13</b> km</span></li>
+          <li><span class="place"><span class="pin"></span><span data-en="Hauptwache">Hauptwache</span></span><span class="km"><b>14</b> km</span></li>
+        </ul>
+        <div class="map-card">
+          <iframe
+            title="Karte: 29 Bergstraße, 65451 Kelsterbach"
+            src="https://www.google.com/maps?q=Bergstra%C3%9Fe+29,+65451+Kelsterbach,+Deutschland&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bergstra%C3%9Fe+29,+65451+Kelsterbach,+Deutschland" target="_blank" rel="noopener" data-en="Open in Google Maps ↗">In Google Maps öffnen ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="block" id="bewertungen">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-en="What guests say">Was Gäste sagen</h2>
+        <div class="rev-score">
+          <span class="big">8,6</span>
+          <p class="muted" style="font-size:.9rem;" data-en="Sample rating — replace with your Booking.com score.">Beispielwertung — durch Ihren Booking.com-Score ersetzen.</p>
+        </div>
+      </div>
+      <div class="rev-grid">
+        <div class="review">
+          <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="quote" data-en="“Clean room, free parking right outside, two minutes to the airport. Perfect for our assembly job.”">„Sauberes Zimmer, kostenloser Parkplatz direkt davor, zwei Minuten zum Flughafen. Perfekt für unseren Montageeinsatz.“</p>
+          <div class="who"><span class="av">MT</span><span><span class="name">Markus T.</span><br /><span class="role" data-en="Fitter, 3 weeks">Monteur · 3 Wochen</span></span></div>
+        </div>
+        <div class="review">
+          <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="quote" data-en="“Quiet, friendly and uncomplicated. We booked the whole team in monthly — great value.”">„Ruhig, freundlich und unkompliziert. Wir haben das ganze Team monatlich gebucht — top Preis-Leistung.“</p>
+          <div class="who"><span class="av">SK</span><span><span class="name">S. Kowalski</span><br /><span class="role" data-en="Site manager">Bauleiter</span></span></div>
+        </div>
+        <div class="review">
+          <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="quote" data-en="“Late flight, late check-in, no problem. Good breakfast and a cold beer at the bar afterwards.”">„Später Flug, später Check-in, kein Problem. Gutes Frühstück und danach ein kühles Bier an der Bar.“</p>
+          <div class="who"><span class="av">AR</span><span><span class="name">Andrea R.</span><br /><span class="role" data-en="Business traveller">Geschäftsreisende</span></span></div>
+        </div>
+      </div>
+      <p class="price-note" data-en="Sample reviews — replace with real guest feedback.">Bewertungen auf booking.com lesen.</p>
+    </div>
+  </section>
+
+  <!-- HOUSE RULES -->
+  <section class="block" id="hausregeln" style="background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-en="House rules">Hausregeln</h2>
+        <p data-en="The essentials for a smooth stay — check-in times, age policy and more.">Das Wichtigste für einen reibungslosen Aufenthalt — Check-in-Zeiten, Altersregelung und mehr.</p>
+      </div>
+      <div class="rules-grid">
+        <div class="rule">
+          <span class="rk" data-en="Check-in">Anreise</span>
+          <span class="rv">16:30 – 22:30<span class="ru" data-en="Uhr">Uhr</span></span>
+        </div>
+        <div class="rule">
+          <span class="rk" data-en="Check-out">Abreise</span>
+          <span class="rv">00:00 – 10:00<span class="ru" data-en="Uhr">Uhr</span></span>
+        </div>
+        <div class="rule">
+          <span class="rk" data-en="Age requirement">Altersbeschränkung</span>
+          <span class="rv rv-sm" data-en="Check-in only for guests aged 18 to 90">Check-in nur für Gäste zwischen 18 und 90 Jahren</span>
+        </div>
+        <div class="rule">
+          <span class="rk" data-en="Children & beds">Kinder &amp; Betten</span>
+          <span class="rv rv-sm" data-en="Children of all ages are welcome.">Kinder jeden Alters sind willkommen. Baby- und Zustellbetten sind nicht verfügbar.</span>
+        </div>
+        <div class="rule">
+          <span class="rk" data-en="Pets">Haustiere</span>
+          <span class="rv rv-sm" data-en="Pets are not allowed.">Haustiere sind nicht gestattet.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING -->
+  <section class="block contact" id="kontakt">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow" data-en="Booking & enquiries">Buchung & Anfragen</span>
+        <h2 style="margin-top:1rem;" data-en="Ready when you are.">Bereit, wenn Sie es sind.</h2>
+        <p class="lede" data-en="Book instantly on Booking.com, or send us a quick WhatsApp message with your dates and number of people — we'll confirm fast.">Buchen Sie direkt auf Booking.com oder schreiben Sie uns kurz per WhatsApp Ihren Zeitraum und die Personenzahl — wir bestätigen schnell.</p>
+        <div class="contact-cta">
+          <a class="btn btn-primary" href="https://www.booking.com/hotel/de/wirtshaus-zum-schutzenhof-kelsterbach.de.html" target="_blank" rel="noopener" data-en="Book on Booking.com">Auf Booking.com buchen<span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="https://wa.me/49000000000" target="_blank" rel="noopener" data-en="WhatsApp enquiry">WhatsApp-Anfrage</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-row"><span class="ik" data-en="Address">Adresse</span><span class="iv">Riverside Airport Hotel<br /><span data-en="[Street & no.], 65451 Kelsterbach">29 Bergstraße, 65451 Kelsterbach</span></span></div>
+        <div class="info-row"><span class="ik" data-en="Phone">Telefon</span><span class="iv"><a href="tel:+49000000000">+49 (0) 1522 2842749</a></span></div>
+        <div class="info-row"><span class="ik" data-en="E-mail">E-Mail</span><span class="iv"><a href="mailto:info@riverside-airport-hotel.de">info@riverside-airport-hotel.de</a></span></div>
+        <div class="info-row"><span class="ik" data-en="Check-in">Check-in</span><span class="iv" data-en="from 14:00 · Check-out until 11:00">ab 16:30 Uhr · Check-out bis 10:00 Uhr</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <a class="brand" href="#top"><span class="mark">R</span><span>Riverside Airport Hotel</span></a>
+    <div class="foot-links">
+      <a href="#" id="openImprint" data-en="Imprint">Impressum</a>
+      <a href="#" id="openPrivacy" data-en="Privacy">Datenschutz</a>
+      <a href="#lage" data-en="Directions">Anfahrt</a>
+    </div>
+    <span>© 2026 Riverside Airport Hotel · Kelsterbach</span>
+  </div>
+</footer>
+
+<div id="tweaks-root"></div>
+
+<!-- PRIVACY MODAL -->
+<div class="modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2 id="privacyTitle"><span data-l="de">Datenschutz­erklärung</span><span data-l="en">Privacy Policy</span></h2>
+        <div class="sub"><span data-l="de">Riverside Airport Hotel · Kelsterbach</span><span data-l="en">Riverside Airport Hotel · Kelsterbach</span></div>
+      </div>
+      <button class="modal-close" id="closePrivacy" aria-label="Schließen / Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- GERMAN -->
+      <div data-l="de">
+        <h3>1. Verantwortlicher</h3>
+        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+        <p><b>Riverside Airport Hotel</b><br />Bergstraße 29, 65451 Kelsterbach<br />Telefon: +49 (0) 000 000 000<br />E-Mail: <a href="mailto:info@riverside-airport-hotel.de">info@riverside-airport-hotel.de</a></p>
+
+        <h3>2. Erhebung und Speicherung personenbezogener Daten</h3>
+        <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Eine Verarbeitung erfolgt regelmäßig nur nach Ihrer Einwilligung oder zur Erfüllung eines Vertrags (z. B. einer Zimmerbuchung).</p>
+
+        <h3>3. Server-Logfiles</h3>
+        <p>Beim Aufruf dieser Website erhebt unser Hosting-Anbieter automatisch Informationen, die Ihr Browser übermittelt. Dazu gehören:</p>
+        <ul>
+          <li>Browsertyp und -version</li>
+          <li>verwendetes Betriebssystem</li>
+          <li>Datum und Uhrzeit des Zugriffs</li>
+          <li>anonymisierte IP-Adresse</li>
+        </ul>
+        <p>Diese Daten dienen ausschließlich der technischen Bereitstellung und Sicherheit (Art. 6 Abs. 1 lit. f DSGVO) und werden nicht mit anderen Datenquellen zusammengeführt.</p>
+
+        <h3>4. Kontaktaufnahme &amp; Buchungsanfragen</h3>
+        <p>Wenn Sie uns per E-Mail, Telefon oder WhatsApp kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage und für mögliche Anschlussfragen gespeichert. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).</p>
+
+        <h3>5. Buchung über Booking.com</h3>
+        <p>Buchungen werden über die Plattform Booking.com abgewickelt. Mit Klick auf „Auf Booking.com buchen" verlassen Sie unsere Website. Für die dort stattfindende Datenverarbeitung gilt die <a href="https://www.booking.com/content/privacy.html" target="_blank" rel="noopener">Datenschutzerklärung von Booking.com</a>.</p>
+
+        <h3>6. Cookies</h3>
+        <p>Diese Website verwendet nur technisch notwendige Speicherung (z. B. Ihre Sprachauswahl) im lokalen Speicher Ihres Browsers. Es werden keine Tracking- oder Marketing-Cookies von Drittanbietern gesetzt.</p>
+
+        <h3>7. Ihre Rechte</h3>
+        <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch. Es besteht zudem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde.</p>
+
+        <p class="upd"><b>Stand:</b> Juni 2026 · Dies ist eine Vorlage und ersetzt keine Rechtsberatung. Bitte vor Veröffentlichung prüfen lassen.</p>
+      </div>
+
+      <!-- ENGLISH -->
+      <div data-l="en">
+        <h3>1. Controller</h3>
+        <p>The party responsible for data processing on this website is:</p>
+        <p><b>Riverside Airport Hotel</b><br />Bergstraße 29, 65451 Kelsterbach, Germany<br />Phone: +49 (0) 000 000 000<br />E-mail: <a href="mailto:info@riverside-airport-hotel.de">info@riverside-airport-hotel.de</a></p>
+
+        <h3>2. Collection and storage of personal data</h3>
+        <p>We process personal data only to the extent necessary to provide a functional website and our content and services. Processing generally takes place only with your consent or to perform a contract (e.g. a room booking).</p>
+
+        <h3>3. Server log files</h3>
+        <p>When you access this website, our hosting provider automatically collects information transmitted by your browser, including:</p>
+        <ul>
+          <li>browser type and version</li>
+          <li>operating system used</li>
+          <li>date and time of access</li>
+          <li>anonymised IP address</li>
+        </ul>
+        <p>This data is used solely for technical provision and security (Art. 6(1)(f) GDPR) and is not merged with other data sources.</p>
+
+        <h3>4. Contact &amp; booking enquiries</h3>
+        <p>If you contact us by e-mail, phone or WhatsApp, your details are stored to handle the enquiry and any follow-up questions. Processing is based on Art. 6(1)(b) GDPR (pre-contractual measures).</p>
+
+        <h3>5. Booking via Booking.com</h3>
+        <p>Bookings are handled through the Booking.com platform. By clicking "Book on Booking.com" you leave our website. The <a href="https://www.booking.com/content/privacy.html" target="_blank" rel="noopener">Booking.com privacy policy</a> applies to any processing that takes place there.</p>
+
+        <h3>6. Cookies</h3>
+        <p>This website only uses technically necessary storage (e.g. your language choice) in your browser's local storage. No third-party tracking or marketing cookies are set.</p>
+
+        <h3>7. Your rights</h3>
+        <p>You have the right at any time to access, rectification, erasure, restriction of processing, data portability and objection. You also have the right to lodge a complaint with the competent supervisory authority.</p>
+
+        <p class="upd"><b>Last updated:</b> June 2026 · This is a template and does not constitute legal advice. Please have it reviewed before publishing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPRINT MODAL -->
+<div class="modal-backdrop" id="imprintModal" role="dialog" aria-modal="true" aria-labelledby="imprintTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2 id="imprintTitle"><span data-l="de">Impressum</span><span data-l="en">Imprint</span></h2>
+        <div class="sub"><span data-l="de">Angaben gemäß § 5 DDG</span><span data-l="en">Information pursuant to § 5 DDG</span></div>
+      </div>
+      <button class="modal-close" id="closeImprint" aria-label="Schließen / Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- GERMAN -->
+      <div data-l="de">
+        <h3>Anbieter</h3>
+        <p><b>Riverside Airport Hotel</b><br />Bergstraße 29<br />65451 Kelsterbach<br />Deutschland</p>
+
+        <h3>Vertreten durch</h3>
+        <p>[Vor- und Nachname der Inhaberin / des Inhabers bzw. Geschäftsführung]</p>
+
+        <h3>Kontakt</h3>
+        <p>Telefon: +49 (0) 000 000 000<br />E-Mail: <a href="mailto:info@riverside-airport-hotel.de">info@riverside-airport-hotel.de</a></p>
+
+        <h3>Umsatzsteuer-ID</h3>
+        <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />[DE000000000]</p>
+
+        <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+        <p>[Vor- und Nachname]<br />Bergstraße 29, 65451 Kelsterbach</p>
+
+        <h3>Streitschlichtung</h3>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+        <h3>Haftung für Inhalte</h3>
+        <p>Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p>
+
+        <h3>Haftung für Links</h3>
+        <p>Unser Angebot enthält Links zu externen Websites Dritter (z. B. Booking.com), auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter verantwortlich.</p>
+
+        <p class="upd"><b>Stand:</b> Juni 2026 · Dies ist eine Vorlage und ersetzt keine Rechtsberatung. Bitte vor Veröffentlichung prüfen lassen.</p>
+      </div>
+
+      <!-- ENGLISH -->
+      <div data-l="en">
+        <h3>Provider</h3>
+        <p><b>Riverside Airport Hotel</b><br />Bergstraße 29<br />65451 Kelsterbach<br />Germany</p>
+
+        <h3>Represented by</h3>
+        <p>[First and last name of owner / managing director]</p>
+
+        <h3>Contact</h3>
+        <p>Phone: +49 (0) 000 000 000<br />E-mail: <a href="mailto:info@riverside-airport-hotel.de">info@riverside-airport-hotel.de</a></p>
+
+        <h3>VAT ID</h3>
+        <p>VAT identification number pursuant to § 27 a of the German VAT Act:<br />[DE000000000]</p>
+
+        <h3>Responsible for content (§ 18 (2) MStV)</h3>
+        <p>[First and last name]<br />Bergstraße 29, 65451 Kelsterbach, Germany</p>
+
+        <h3>Dispute resolution</h3>
+        <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. We are not obliged and not willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+
+        <h3>Liability for content</h3>
+        <p>As a service provider, we are responsible for our own content on these pages in accordance with general law. However, we are not obliged to monitor transmitted or stored third-party information.</p>
+
+        <h3>Liability for links</h3>
+        <p>Our website contains links to external third-party websites (e.g. Booking.com) over whose content we have no influence. The respective provider is always responsible for such external content.</p>
+
+        <p class="upd"><b>Last updated:</b> June 2026 · This is a template and does not constitute legal advice. Please have it reviewed before publishing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#bd5d3a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#bd5d3a"/>
+    <g fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M600 250 L600 470"/>
+      <path d="M600 280 L420 470 L420 510 L600 440 L780 510 L780 470 Z" fill="#ffffff" stroke="none"/>
+      <path d="M560 470 L640 470 L620 540 L580 540 Z" fill="#ffffff" stroke="none"/>
+    </g>
+    <text x="600" y="630" font-family="'Space Grotesk',sans-serif" font-size="74" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="-2">Riverside</text>
+    <text x="600" y="690" font-family="'Hanken Grotesk',sans-serif" font-size="30" fill="#ffffff" text-anchor="middle" letter-spacing="6" opacity="0.85">AIRPORT HOTEL · KELSTERBACH</text>
+  </svg>
+</template>
+
+<script src="image-slot.js"></script>
+<script>
+/* ---- language toggle (DE default in markup, EN in data-en) ---- */
+(function(){
+  const root=document.documentElement;
+  function applyLang(lang){
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      // Capture the German source ONCE — and only when it is actually present —
+      // so an element that momentarily loads empty can never poison data-de.
+      if(!el.hasAttribute('data-de') && el.innerHTML.trim()!==''){
+        el.setAttribute('data-de', el.innerHTML);
+      }
+      const de = el.getAttribute('data-de');
+      const en = el.getAttribute('data-en');
+      let next = (lang==='en') ? en : de;
+      // Never blank an element: fall back to whichever language has content.
+      if(next==null || next.trim()===''){ next = (de && de.trim()) ? de : en; }
+      if(next!=null && next.trim()!=='') el.innerHTML = next;
+    });
+    root.setAttribute('lang', lang);
+    root.setAttribute('data-lang', lang);
+    document.querySelectorAll('.lang-switch button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.setlang===lang);
+    });
+    try{ localStorage.setItem('rah_lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-switch button').forEach(b=>{
+    b.addEventListener('click', ()=>applyLang(b.dataset.setlang));
+  });
+  let saved='de'; try{ saved=localStorage.getItem('rah_lang')||'de'; }catch(e){}
+  applyLang(saved);
+
+  /* header shadow on scroll */
+  const head=document.getElementById('siteHeader');
+  const onScroll=()=>head.classList.toggle('scrolled', window.scrollY>10);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* modals (privacy + imprint) */
+  let lastFocus=null;
+  function openModal(modal){ lastFocus=document.activeElement; modal.classList.add('open'); document.body.style.overflow='hidden'; const c=modal.querySelector('.modal-close'); if(c) c.focus(); }
+  function closeModal(modal){ modal.classList.remove('open'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+  function wireModal(openId, modalId, closeId){
+    const opener=document.getElementById(openId);
+    const modal=document.getElementById(modalId);
+    const closer=document.getElementById(closeId);
+    if(!modal) return;
+    if(opener) opener.addEventListener('click', (e)=>{ e.preventDefault(); openModal(modal); });
+    if(closer) closer.addEventListener('click', ()=>closeModal(modal));
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(modal); });
+  }
+  wireModal('openPrivacy','privacyModal','closePrivacy');
+  wireModal('openImprint','imprintModal','closeImprint');
+  document.addEventListener('keydown', (e)=>{
+    if(e.key!=='Escape') return;
+    document.querySelectorAll('.modal-backdrop.open').forEach(m=>closeModal(m));
+  });
+
+  /* hero carousel */
+  (function(){
+    const track=document.getElementById('hcTrack');
+    if(!track) return;
+    const slides=track.children;
+    const total=slides.length;
+    const idxEl=document.getElementById('hcIdx');
+    const bar=document.getElementById('hcBar');
+    const car=document.getElementById('heroCarousel');
+    let i=0, timer=null, raf=null, t0=0;
+    const DUR=5000;
+    const pad=n=>String(n+1).padStart(2,'0');
+    function render(){
+      track.style.transform='translateX('+(-i*100)+'%)';
+      idxEl.textContent=pad(i);
+    }
+    function go(n){ i=(n+total)%total; render(); restart(); }
+    function next(){ go(i+1); }
+    function prev(){ go(i-1); }
+    function tick(ts){
+      if(!t0) t0=ts;
+      const p=Math.min((ts-t0)/DUR,1);
+      bar.style.width=(p*100)+'%';
+      if(p>=1){ t0=0; i=(i+1)%total; render(); }
+      raf=requestAnimationFrame(tick);
+    }
+    function start(){ cancelAnimationFrame(raf); t0=0; bar.style.width='0%'; raf=requestAnimationFrame(tick); }
+    function stop(){ cancelAnimationFrame(raf); }
+    function restart(){ start(); }
+    document.getElementById('hcNext').addEventListener('click', next);
+    document.getElementById('hcPrev').addEventListener('click', prev);
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    // basic swipe
+    let sx=null;
+    car.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; stop(); }, {passive:true});
+    car.addEventListener('touchend', e=>{ if(sx==null) return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40){ dx<0?next():prev(); } sx=null; start(); }, {passive:true});
+    render(); start();
+  })();
+
+})();
+</script>
+
+<!-- Tweaks panel (color worlds / accent / corners / type) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const RAH_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "greige",
+  "accent": "green",
+  "corners": "soft",
+  "base": 16
+}/*EDITMODE-END*/;
+
+const ACCENTS = {
+  auto:  null,
+  terracotta: "#bd5d3a",
+  blue: "#2f6fdb",
+  green: "#2f6b4f",
+  gold: "#c79a4e"
+};
+
+function TweaksApp(){
+  const [t, setTweak] = useTweaks(RAH_DEFAULTS);
+  React.useEffect(()=>{
+    const root=document.documentElement;
+    root.setAttribute('data-theme', t.theme);
+    root.setAttribute('data-radius', t.corners==='sharp'?'sharp':'soft');
+    root.style.setProperty('--base', (t.base||16)+'px');
+    const a=ACCENTS[t.accent];
+    if(a) root.style.setProperty('--accent', a);
+    else root.style.removeProperty('--accent');
+  },[t.theme,t.accent,t.corners,t.base]);
+
+  return (
+    <TweaksPanel>
+      <TweakSection label="Farbwelt" />
+      <TweakSelect label="Theme" value={t.theme}
+        options={[
+          {value:'greige', label:'Greige · warm-neutral'},
+          {value:'slate', label:'Slate · kühl'},
+          {value:'forest', label:'Forest · erdig'},
+          {value:'anthracite', label:'Anthrazit · dunkel'}
+        ]}
+        onChange={(v)=>setTweak('theme', v)} />
+      <TweakColor label="Akzent" value={ACCENTS[t.accent]||'#bd5d3a'}
+        options={['#bd5d3a','#2f6fdb','#2f6b4f','#c79a4e']}
+        onChange={(hex)=>{
+          const key=Object.keys(ACCENTS).find(k=>ACCENTS[k]===hex)||'auto';
+          setTweak('accent', key);
+        }} />
+      <TweakSection label="Form & Typo" />
+      <TweakRadio label="Ecken" value={t.corners}
+        options={[{value:'soft',label:'Weich'},{value:'sharp',label:'Eckig'}]}
+        onChange={(v)=>setTweak('corners', v)} />
+      <TweakSlider label="Schriftgröße" value={t.base} min={15} max={19} step={1} unit="px"
+        onChange={(v)=>setTweak('base', v)} />
+    </TweaksPanel>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<TweaksApp/>);
+</script>
+
+</body>
+</html>
